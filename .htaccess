@@ -1,2 +1,11 @@
-RewriteCond %{THE_REQUEST} ^.*/index\.php 
-RewriteRule ^(.*)index.php$ /$1 [R=301,L] 
+Options +FollowSymLinks
+DirectoryIndex index.php
+
+RewriteEngine On
+RewriteBase /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index.php HTTP/
+RewriteRule ^index.php$ https://sparkling-snow-9269.on.fleek.co/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
